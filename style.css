@@ -1,0 +1,247 @@
+@import "node_modules/ol/ol.css";
+
+html,
+body {
+	margin: 0;
+	height: 100%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#map {
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+hr{
+	opacity: 1;
+	color: lightgrey;
+}
+
+body {
+	height: 1fr;
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		"nav section section"
+		"nav section section";
+	grid-template-rows: 10% 1fr 20%;
+	grid-template-columns: 17% 1fr;
+	
+}
+
+
+nav {
+	grid-area: nav;
+	box-shadow: -1px 0 0 0  lightgrey;
+  padding: 10px;
+  overflow: auto;
+}
+
+section {
+	grid-area: section;
+}
+
+header {
+	box-shadow: 0px 4px 6px -6px #e2e2e2; 
+	z-index: 1;
+	grid-area: header;
+}
+
+ul {
+    list-style-type: none;
+	padding: 0;
+    margin: 5px;
+}
+
+
+
+#texte_adresse{
+	background-color: rgb(250,250,250);
+	border:1px solid lightgrey ;
+	border-radius: 15px 0  0 15px;
+	width: 100%;
+	position: relative;
+	
+}
+
+#texte_span, .legende{
+	justify-content: center;
+	display: flex;
+}
+
+#texte_span{
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-weight: 600;
+}
+#geocode{
+	border: 0;
+	width: 100%;
+	grid-area:"geocode";
+	border: 1px solid lightgrey;
+	border-right: 0px;
+	border-bottom-left-radius: 15px;
+	border-top-left-radius: 15px;
+	padding-left: 10px;
+}
+
+
+.option{
+	margin-top:5%;
+	margin-bottom:5%;
+	border-radius: 15px ;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 30px;
+	display: grid;
+	grid-template-columns:  1fr 35px;
+	grid-template-areas:
+	" geocode recherche";
+	justify-items: center;
+	font-size: 14px;
+	
+}
+
+#recherche{
+	width: 100%;
+	background: url("img/loupe.png") no-repeat scroll 0 0 transparent;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border: 1px solid lightgrey;
+	background-size: 23px;
+	background-color:rgb(250,250,250);
+	background-position: center
+}
+
+#recherche:hover{
+	background-color: rgb(240,240,240);
+}
+.picto{
+	grid-area: "legende";
+	width: 30px ;	
+	grid-column: 2/3;
+
+}
+#selection_layer{
+	display: grid;
+	font-size: 14px;
+	grid-template-columns: 12px 35px 1fr;
+	grid-template-areas:
+	"mode temps geocode";
+	align-items: center;
+	grid-gap: 5px;
+
+}
+
+.check_layer{
+	grid-area: "checkbox";
+	grid-column: 1/2;
+	width: 100%;
+	height: 50px;
+}
+
+#texte{
+	grid-area: "texte";
+	grid-column: 3/4;
+
+}
+
+#piste{
+	border:3px solid #38bf46;
+}
+
+#couloir{
+	border:2px dashed black;
+	stroke-width: 15px;
+}
+
+#autre{
+	border:1.5px solid #38bf46;
+}
+
+#bande{
+	border:2px dashed #38bf46;
+}
+
+#source{
+	color: darkgray;	
+}
+
+
+.ol-popup {
+	position: absolute;
+	background-color: white;
+	-webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+	filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #cccccc;
+	bottom: 12px;
+	left: -50px;
+	min-width: 220px;
+  }
+  .ol-popup:after, .ol-popup:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+  }
+  .ol-popup:after {
+	border-top-color: white;
+	border-width: 10px;
+	left: 48px;
+	margin-left: -10px;
+  }
+  .ol-popup:before {
+	border-top-color: #cccccc;
+	border-width: 11px;
+	left: 48px;
+	margin-left: -11px;
+  }
+  .ol-popup-closer {
+	text-decoration: none;
+	position: absolute;
+	top: 2px;	
+	right: 8px;
+  }
+  .ol-popup-closer:after {
+	content: "✖";
+  }
+
+#popup-text{
+	font-size: 90%;
+	line-height: 20px;
+	margin-bottom: 5px
+}
+
+.rotate-north {
+	top: 65px;
+	left: .5em;
+  }
+  .ol-touch .rotate-north {
+	top: 80px;
+  }
+
+#info{
+	font-size: 13.5px;
+}
+
+th{
+	font-weight: 500;
+}
+
+th {
+	background-color: rgb(250,250,250);
+  }
+
+table{
+	border: 1px solid lightgrey
+}
