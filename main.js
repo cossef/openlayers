@@ -214,12 +214,6 @@ const clusters = new VectorLayer({
 	style: clusterStyle,
 });
 
-// Layer displaying the expanded view of overlapping cluster members.
-const clusterCircles = new VectorLayer({
-	source: clusterSource,
-	style: clusterCircleStyle,
-});
-
 const piste_cyclable = new ImageLayer({
 	source: new ImageWMS({
 		url: 'http://localhost:8080/geoserver/OL/wms?service=WMS&version=1.1.0&request=GetMap',

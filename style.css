@@ -34,7 +34,7 @@ body {
 
 nav {
 	grid-area: nav;
-	box-shadow: -1px 0 0 0  lightgrey;
+	border-right: 1px solid lightgrey;
   padding: 10px;
   overflow: auto;
 }
@@ -44,7 +44,7 @@ section {
 }
 
 header {
-	box-shadow: 0px 4px 6px -6px #e2e2e2; 
+	box-shadow: 0px 6px 6px -6px lightgray; 
 	z-index: 1;
 	grid-area: header;
 }
