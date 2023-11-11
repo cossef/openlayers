@@ -13,6 +13,7 @@ import {Icon, Style} from 'ol/style.js';
 import { Circle as CircleStyle, Fill, Stroke, Text} from 'ol/style.js';
 import {fromLonLat} from 'ol/proj.js';
 import {Cluster} from 'ol/source.js';
+import {Control} from 'ol/control.js';
 
 const outerCircleFill = new Fill({
 	color: 'rgba(105, 207, 126, .3)',
@@ -314,3 +315,11 @@ map.on('click', function(event) {
 		overlay.setPosition(undefined);
 	}
 });
+
+//changement
+const customControl = new Control({
+	element: document.getElementById('distance'), // l'élément DOM de votre contrôle personnalisé
+  });
+  map.addControl(customControl);
+
+let checkMesure = false
