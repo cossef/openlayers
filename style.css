@@ -26,13 +26,13 @@ body {
 		"header header header"
 		"nav section section"
 		"nav section section";
-	grid-template-rows: 10% 1fr 20%;
-	grid-template-columns: 20% 1fr;	
+	grid-template-rows: 6% 1fr;
+	grid-template-columns: 15% 1fr;	
 }
 
 nav {
 	grid-area: nav;
-	border-right: 1px solid lightgrey;
+	border-right: 1px solid rgb(230, 230, 230);
   padding: 10px;
   overflow: auto;
 }
@@ -42,7 +42,7 @@ section {
 }
 
 header {
-	box-shadow: 0px 6px 6px -6px lightgray; 
+	border-bottom: 1px solid rgb(230, 230, 230);
 	z-index: 1;
 	grid-area: header;
 }
@@ -84,6 +84,7 @@ ul {
 	border-bottom-left-radius: 15px;
 	border-top-left-radius: 15px;
 	padding-left: 10px;
+	z-index: 1;
 }
 
 .option{

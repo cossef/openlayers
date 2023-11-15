@@ -13,7 +13,6 @@ import {Icon, Style} from 'ol/style.js';
 import { Circle as CircleStyle, Fill, Stroke, Text} from 'ol/style.js';
 import {fromLonLat} from 'ol/proj.js';
 import {Cluster} from 'ol/source.js';
-import {Control} from 'ol/control.js';
 
 const outerCircleFill = new Fill({
 	color: 'rgba(105, 207, 126, .3)',
@@ -215,6 +214,12 @@ const clusters = new VectorLayer({
 	style: clusterStyle,
 });
 
+// Layer displaying the expanded view of overlapping cluster members.
+const clusterCircles = new VectorLayer({
+	source: clusterSource,
+	style: clusterCircleStyle,
+});
+
 const piste_cyclable = new ImageLayer({
 	source: new ImageWMS({
 		url: 'http://localhost:8080/geoserver/OL/wms?service=WMS&version=1.1.0&request=GetMap',
@@ -233,21 +238,37 @@ const gare = new VectorLayer({
 	}),
 });
 
+const bus = new VectorLayer({
+	source: new VectorSource({
+		url: 'json/arret_bus.geojson',
+		format: new GeoJSON()
+	}),
+});
+  
 const gareStyle = new Style({
 	image: new Icon({
 		src: 'img/tram.png',
 		scale: .15
 	}),
 });
+const busStyle = new Style({
+	image: new Icon({
+		src: 'img/bus.png',
+		scale: .15
+	}),
+});
+bus.setStyle(busStyle)
 gare.setStyle(gareStyle);
 
 piste_cyclable.setZIndex(0)
 gare.setZIndex(1)
 clusters.setZIndex(2)
+bus.setZIndex(0)
 
 let layers = {
     "geoserver-Pistes_cyclables": piste_cyclable,
     "geojson-gare": gare,
+	"geojson-bus":bus,
     "api-velo": clusters
 }
 
@@ -316,10 +337,21 @@ map.on('click', function(event) {
 	}
 });
 
-//changement
-const customControl = new Control({
-	element: document.getElementById('distance'), // l'élément DOM de votre contrôle personnalisé
-  });
-  map.addControl(customControl);
+const url2 = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Paris?unitGroup=us&include=current&key=XHYH9BA3HR5RTF4EDZP4K9Y3A&contentType=json";
 
-let checkMesure = false
+fetch(url2)
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data)
+	const iconmeteo = data.currentConditions.icon
+	const temperatureActuelle = Math.floor((data.currentConditions.temp-32)/1.8);
+    console.log(temperatureActuelle)
+	console.log(iconmeteo)
+	document.getElementById('temp').innerHTML = `${temps} ${temperatureActuelle}°C`;
+  });
+
+var temps = "pluvieux"
+
+document.getElementById('temp').innerHTML = `${temps} ${k}`;
