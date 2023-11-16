@@ -13,6 +13,7 @@ import {Icon, Style} from 'ol/style.js';
 import { Circle as CircleStyle, Fill, Stroke, Text} from 'ol/style.js';
 import {fromLonLat} from 'ol/proj.js';
 import {Cluster} from 'ol/source.js';
+import TileWMS from 'ol/source/TileWMS.js';
 
 const outerCircleFill = new Fill({
 	color: 'rgba(105, 207, 126, .3)',
@@ -260,6 +261,19 @@ const busStyle = new Style({
 bus.setStyle(busStyle)
 gare.setStyle(gareStyle);
 
+let wmsPollution = 
+	new TileLayer({
+	  source: new TileWMS({
+		url: 'https://magellan.airparif.asso.fr/geoserver/apisHorAir/wms',
+		params: {"request":"GetMap",'LAYERS': 'apisHorAir:indice_api', "styles":"","authkey":"c719086c-94d2-f6e0-2fff-94db463fba2d" },
+		serverType: 'geoserver',
+		// Countries have transparency, so do not fade tiles:
+		transition: 0,
+	  }),
+	  opacity:1
+	});
+
+console.log(wmsPollution)
 piste_cyclable.setZIndex(0)
 gare.setZIndex(1)
 clusters.setZIndex(2)
@@ -269,7 +283,8 @@ let layers = {
     "geoserver-Pistes_cyclables": piste_cyclable,
     "geojson-gare": gare,
 	"geojson-bus":bus,
-    "api-velo": clusters
+    "api-velo": clusters,
+	"wms-pollution":wmsPollution
 }
 
 document.querySelector('#selection_layer').onclick = function(ev) {
@@ -336,22 +351,3 @@ map.on('click', function(event) {
 		overlay.setPosition(undefined);
 	}
 });
-
-const url2 = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Paris?unitGroup=us&include=current&key=XHYH9BA3HR5RTF4EDZP4K9Y3A&contentType=json";
-
-fetch(url2)
-  .then(response => {
-    return response.json();
-  })
-  .then(data => {
-    console.log(data)
-	const iconmeteo = data.currentConditions.icon
-	const temperatureActuelle = Math.floor((data.currentConditions.temp-32)/1.8);
-    console.log(temperatureActuelle)
-	console.log(iconmeteo)
-	document.getElementById('temp').innerHTML = `${temps} ${temperatureActuelle}°C`;
-  });
-
-var temps = "pluvieux"
-
-document.getElementById('temp').innerHTML = `${temps} ${k}`;
