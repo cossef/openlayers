@@ -267,13 +267,11 @@ let wmsPollution =
 		url: 'https://magellan.airparif.asso.fr/geoserver/apisHorAir/wms',
 		params: {"request":"GetMap",'LAYERS': 'apisHorAir:indice_api', "styles":"","authkey":"c719086c-94d2-f6e0-2fff-94db463fba2d" },
 		serverType: 'geoserver',
-		// Countries have transparency, so do not fade tiles:
 		transition: 0,
 	  }),
 	  opacity:1
 	});
 
-console.log(wmsPollution)
 piste_cyclable.setZIndex(0)
 gare.setZIndex(1)
 clusters.setZIndex(2)
