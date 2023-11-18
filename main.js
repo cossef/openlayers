@@ -331,7 +331,7 @@ map.on('click', function(event) {
 
 				let ctx = document.getElementById('chart');
 				let data = {
-					labels: ['Vélos disponibles', 'Places disponibles'],
+					labels: [`${veloRestant} vélos disponibles`, `${placeRestant} places disponibles`],
 					datasets: [{
 						data: [veloRestant, placeRestant],
 						backgroundColor: ['rgba(105,207,126, 1)', '#A86363']
@@ -340,6 +340,7 @@ map.on('click', function(event) {
 				myChart = new Chart(ctx, {
 					type: 'pie',
 					data: data,
+					
 				});
 			}
 		}
