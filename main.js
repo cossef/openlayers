@@ -320,6 +320,9 @@ map.on('click', function(event) {
 				if (myChart != null) {
 					myChart.destroy();
 				}
+				container.style.display = 'inline'
+				container.style.position = 'absolute'
+
 				let nomStation = clusterFeatures[0]["values_"]["name"]
 				let dateStation = clusterFeatures[0]["values_"]["duedate"]
 				let veloRestant = clusterFeatures[0]["values_"]["numbikesavailable"]

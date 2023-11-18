@@ -167,7 +167,7 @@ ul {
 }
 
 .ol-popup {
-	position: absolute;
+	position: relative;
 	background-color: white;
 	-webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
 	filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
@@ -177,6 +177,7 @@ ul {
 	bottom: 12px;
 	left: -50px;
 	min-width: 200px;
+	display: none;
   }
 .ol-popup:after, .ol-popup:before {
 	top: 100%;
