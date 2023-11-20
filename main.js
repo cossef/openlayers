@@ -134,6 +134,7 @@ let myChart;
 const container = document.getElementById('popup');
 const content = document.getElementById('popup-content');
 const closer = document.getElementById('popup-closer');
+container.style.position = 'absolute'
 
 const overlay = new Overlay({
 	element: container,
@@ -321,7 +322,6 @@ map.on('click', function(event) {
 					myChart.destroy();
 				}
 				container.style.display = 'inline'
-				container.style.position = 'absolute'
 
 				let nomStation = clusterFeatures[0]["values_"]["name"]
 				let dateStation = clusterFeatures[0]["values_"]["duedate"]
@@ -353,3 +353,11 @@ map.on('click', function(event) {
 		overlay.setPosition(undefined);
 	}
 });
+
+const opacityInput = document.getElementById('opacity-input');
+function update() {
+  const opacity = parseFloat(opacityInput.value);
+  wmsPollution.setOpacity(opacity);
+}
+opacityInput.addEventListener('input', update);
+update();

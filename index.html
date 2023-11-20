@@ -44,11 +44,15 @@
             <span id="texte"><b>Arrêt de bus</b></span>
 
             <input type="checkbox" autocomplete="off" name="" id="wms-pollution" class="check_layer" > 
-            <div class="legende">  <img src="img/qualité air.png" alt="" class="picto" srcset=""></div>
-            <span id="texte"><b>Qualité de l'air</b></span>
+            <div class="legende">  </div>
+            <span id="texte"><b>Qualité de l'air</b>
+               <label>
+                  Opacité            <input id="opacity-input" type="range" min="0" max="1" step="0.01" value="1" />
+                            </label></span>
 
 
          </div>
+
       </nav>
       <section>
          <div id="map" class="map"></div>
