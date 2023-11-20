@@ -243,6 +243,12 @@ ul {
 
 footer{
 	border-top: 1px solid rgb(230, 230, 230);
+	grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+	text-align: center;
+	font-size: 14px;
 }
 
 #opacity-input{
