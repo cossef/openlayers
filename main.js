@@ -16,10 +16,10 @@ import {Cluster} from 'ol/source.js';
 import TileWMS from 'ol/source/TileWMS.js';
 
 const outerCircleFill = new Fill({
-	color: 'rgba(105, 207, 126, .3)',
+	color: 'rgba(40, 133, 111, .3)',
 });
 const innerCircleFill = new Fill({
-	color: 'rgba(105,207,126, 1)',
+	color: 'rgba(40, 133, 111, 1)',
 });
 const textFill = new Fill({
 	color: '#fff',
@@ -337,7 +337,7 @@ map.on('click', function(event) {
 					labels: [`${veloRestant} vélos disponibles`, `${placeRestant} places disponibles`],
 					datasets: [{
 						data: [veloRestant, placeRestant],
-						backgroundColor: ['rgba(105,207,126, 1)', '#A86363']
+						backgroundColor: ['#28856F', '#f7e1b5']
 					}]
 				};
 				myChart = new Chart(ctx, {
