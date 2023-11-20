@@ -134,7 +134,7 @@ ul {
 	font-size: 14px;
 	grid-template-columns: 12px 35px 1fr;
 	grid-template-areas:
-	"mode temps geocode";
+	"check_layer legende texte";
 	align-items: center;
 	grid-gap: 5px;
 }
