@@ -27,7 +27,7 @@ body {
 		"nav section section"
 		"footer footer footer";
 	grid-template-rows: 6% 1fr 3%;
-	grid-template-columns: 15% 1fr;	
+	grid-template-columns: 20% 1fr;	
 }
 
 nav {
