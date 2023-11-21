@@ -1,70 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <link rel="stylesheet" href="style.css">
-      <script type="module" src="./main.js"></script>
-      <meta charset="UTF-8" />
-      <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Faire du vélo à Paris</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-   </head>
-   <body>
-      <header>
-         <span style="padding-left: 1%;">VELO A PARIS (projet dingue)</span>
-      </header>
-      <nav>
-          <b>Géocodage</b> 
-         <div class="option">
-            <input type="text" name="" id="geocode" placeholder="Rechercher une adresse" >
-            <button id="recherche" onclick="geocode()" ></button>
-         </div>
-         <hr>
-          <b>Légende</b>
-         <div id="selection_layer">
-            <input type="checkbox" autocomplete="off" name="" id="api-velo" class="check_layer" > 
-            <div class="legende">  <img src="img/velo.png" alt="" class="picto" srcset=""></div>
-            <span id="texte"><b>Vélib - Vélos et bornes</b><br>Disponibilité temps réel - Informations en popup</span>
-            <input type="checkbox" autocomplete="off" name="" id="geoserver-Pistes_cyclables" class="check_layer">
-            <div class="legende">
-               <hr class="picto" id="piste" >
-            </div>
-            <span id="texte"> <b>Réseau des itinéraires cyclables</b></span> <br> 
-            <hr id="bande" >
-            <span id="texte">Bandes cyclables</span> <br>
-            <hr id="couloir" >
-            <span id="texte">Couloirs de bus</span> <br> 
-            <hr id="autre" >
-            <span id="texte">Autres itinéraires cyclables (ex : Aires piétonnes)</span>
-            <input type="checkbox" autocomplete="off" name="" id="geojson-gare" class="check_layer">
-            <div class="legende"> <img src="img/tram.png" alt="" class="picto" srcset=""></div>
-            <span id="texte"> <b>Gares et stations du réseau ferré</b> </span>
-            <input type="checkbox" autocomplete="off" name="" id="geojson-bus" class="check_layer" > 
-            <div class="legende">  <img src="img/bus.png" alt="" class="picto" srcset=""></div>
-            <span id="texte"><b>Arrêt de bus</b></span>
-            <input type="checkbox" autocomplete="off" name="" id="wms-pollution" class="check_layer" > 
-            <div class="legende">  </div>
-            <span id="texte"><b>Qualité de l'air</b>
-               <label style="display: flex;"> <span style="margin-right: 10px;" >Opacité</span>  <input id="opacity-input" type="range" min="0" max="1" step="0.01" value="1" />
-                            </label>
-                           </span>
-
-
-         </div>
-
-      </nav>
-      <section>
-         <div id="map" class="map"></div>
-         <div id="popup" class="ol-popup">
-            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-            <div id="popup-content"></div>
-            <canvas id="chart" width="100" height="50"></canvas>
-         </div>
-      </section>
-      <footer>
-         cool
-      </footer>
-   </body>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./main.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faire du vélo à Paris</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/4729/4729806.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+      <span style="padding-left: 1%;">VELO A PARIS (projet dingue)</span>
+      </button>
+    </header>
+    <nav>
+      <b>Géocodage</b>
+      <div class="option">
+        <input type="text" name="" id="geocode" placeholder="Rechercher une adresse">
+        <button id="recherche" onclick="geocode()"></button>
+      </div>
+      <hr>
+      <b>Légende</b>
+      <div id="selection_layer">
+        <input type="checkbox" autocomplete="off" name="" id="api-velo" class="check_layer">
+        <div class="legende">
+          <img src="img/velo.png" alt="" class="picto" srcset="">
+        </div>
+        <span id="texte">
+          <b>Vélib - Vélos et bornes</b>
+          <br>Disponibilité temps réel - Informations en popup </span>
+        <input type="checkbox" autocomplete="off" name="" id="geoserver-Pistes_cyclables" class="check_layer">
+        <div class="legende">
+          <hr class="picto" id="piste">
+        </div>
+        <span id="texte">
+          <b>Réseau des itinéraires cyclables</b>
+        </span>
+        <br>
+        <hr id="bande">
+        <span id="texte">Bandes cyclables</span>
+        <br>
+        <hr id="couloir">
+        <span id="texte">Couloirs de bus</span>
+        <br>
+        <hr id="autre">
+        <span id="texte">Autres itinéraires cyclables (ex : Aires piétonnes)</span>
+        <input type="checkbox" autocomplete="off" name="" id="geojson-gare" class="check_layer">
+        <div class="legende">
+          <img src="img/tram.png" alt="" class="picto" srcset="">
+        </div>
+        <span id="texte">
+          <b>Gares et stations du réseau ferré</b>
+        </span>
+        <input type="checkbox" autocomplete="off" name="" id="geojson-bus" class="check_layer">
+        <div class="legende">
+          <img src="img/bus.png" alt="" class="picto" srcset="">
+        </div>
+        <span id="texte">
+          <b>Arrêt de bus</b>
+        </span>
+        <input type="checkbox" autocomplete="off" name="" id="wms-pollution" class="check_layer">
+        <div class="legende">
+          <img src="https://cdn-icons-png.flaticon.com/128/9393/9393803.png" alt="" class="picto" srcset="">
+        </div>
+        <span id="texte">
+          <b>Qualité de l'air</b>
+          <label style="display: flex;">
+            <span style="margin-right: 10px;">Opacité</span>
+            <input id="opacity-input" type="range" min="0" max="1" step="0.01" value="1" />
+          </label>
+      </div>
+      <li><span style="background-color: #7d2181;" id="rectangle"></span>Extremement mauvaise</li>
+      <li><span style="background-color: #960032;" id="rectangle"></span>Trés mauvaise</li>
+      <li><span style="background-color: #ff5050;" id="rectangle"></span>Mauvaise</li>
+      <li><span style="background-color: #f0e641;" id="rectangle"></span>Degradé</li>
+      <li><span style="background-color: #50ccaa;" id="rectangle"></span>Moyenne</li>
+      <li><span style="background-color: #50f0e6;" id="rectangle"></span>Bonne</li>
+      </span>
+    </nav>
+    <section>
+      <div id="map" class="map"></div>
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+        <canvas id="chart" width="100" height="50"></canvas>
+      </div>
+    </section>
+    <footer></footer>
+  </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

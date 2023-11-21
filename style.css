@@ -149,6 +149,7 @@ ul {
 #texte{
 	grid-area: "texte";
 	grid-column: 3/4;
+	font-size: 15px;
 }
 
 #piste{
@@ -244,7 +245,6 @@ ul {
 footer{
 	border-top: 1px solid rgb(230, 230, 230);
 	grid-area: footer;
-    display: flex;
     flex-direction: column;
     justify-content:center;
 	text-align: center;
@@ -252,5 +252,21 @@ footer{
 }
 
 #opacity-input{
-	width: 100%;
+	width: 70%;
+}
+
+#rectangle{
+	width: 17px;
+	height: 17px;
+	display: inline-block;
+	margin-right:7px;
+}
+#ba{
+	border-color: black;
+	border-width: 2px;
+}
+
+li{
+	list-style-type: none; 
+	font-size: 14px;
 }
