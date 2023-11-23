@@ -51,6 +51,7 @@ header {
 	background-color: #28856F;
 	color: white;
 	font-weight: 700;
+	font-size: 28px;
 }
 
 ul {
@@ -261,12 +262,12 @@ footer{
 	display: inline-block;
 	margin-right:7px;
 }
-#ba{
-	border-color: black;
-	border-width: 2px;
-}
 
 li{
 	list-style-type: none; 
 	font-size: 14px;
+}
+
+.qualite{
+	margin-left: 20px;
 }

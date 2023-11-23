@@ -7,12 +7,12 @@
     <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Faire du vélo à Paris</title>
-    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/4729/4729806.png">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/4315/4315531.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
     <header>
-      <span style="padding-left: 1%;">VELO A PARIS (projet dingue)</span>
+      <span style="padding-left: 1%;">Où faire du vélo ?</span>
       </button>
     </header>
     <nav>
@@ -72,13 +72,14 @@
             <input id="opacity-input" type="range" min="0" max="1" step="0.01" value="1" />
           </label>
       </div>
+        <div class="qualite">
       <li><span style="background-color: #7d2181;" id="rectangle"></span>Extremement mauvaise</li>
       <li><span style="background-color: #960032;" id="rectangle"></span>Trés mauvaise</li>
       <li><span style="background-color: #ff5050;" id="rectangle"></span>Mauvaise</li>
       <li><span style="background-color: #f0e641;" id="rectangle"></span>Degradé</li>
       <li><span style="background-color: #50ccaa;" id="rectangle"></span>Moyenne</li>
       <li><span style="background-color: #50f0e6;" id="rectangle"></span>Bonne</li>
-      </span>
+    </div>
     </nav>
     <section>
       <div id="map" class="map"></div>
@@ -88,7 +89,9 @@
         <canvas id="chart" width="100" height="50"></canvas>
       </div>
     </section>
-    <footer></footer>
+    <footer>
+     <i>Florian COSSE - Bastien RIBEYRE</i> 
+    </footer>
   </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
