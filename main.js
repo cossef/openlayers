@@ -1,18 +1,18 @@
 import './style.css';
-import {Map, View} from 'ol';
+import { Map, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
-import {ScaleLine,defaults as defaultControls} from 'ol/control.js';
+import { ScaleLine, defaults as defaultControls } from 'ol/control.js';
 import XYZ from 'ol/source/XYZ.js';
-import {Image as ImageLayer} from 'ol/layer.js';
+import { Image as ImageLayer } from 'ol/layer.js';
 import ImageWMS from 'ol/source/ImageWMS.js';
 import VectorLayer from 'ol/layer/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
-import {Vector as VectorSource} from 'ol/source.js';
+import { Vector as VectorSource } from 'ol/source.js';
 import Overlay from 'ol/Overlay.js';
-import {Icon, Style} from 'ol/style.js';
-import { Circle as CircleStyle, Fill, Stroke, Text} from 'ol/style.js';
-import {fromLonLat} from 'ol/proj.js';
-import {Cluster} from 'ol/source.js';
+import { Icon, Style } from 'ol/style.js';
+import { Circle as CircleStyle, Fill, Stroke, Text } from 'ol/style.js';
+import { fromLonLat } from 'ol/proj.js';
+import { Cluster } from 'ol/source.js';
 import TileWMS from 'ol/source/TileWMS.js';
 
 const outerCircleFill = new Fill({
@@ -149,7 +149,7 @@ const overlay = new Overlay({
  * Add a click handler to hide the popup.
  * @return {boolean} Don't follow the href.
  */
-closer.onclick = function() {
+closer.onclick = function () {
 	overlay.setPosition(undefined);
 	closer.blur();
 	return false;
@@ -246,7 +246,7 @@ const bus = new VectorLayer({
 		format: new GeoJSON()
 	}),
 });
-  
+
 const gareStyle = new Style({
 	image: new Icon({
 		src: 'img/tram.png',
@@ -262,15 +262,15 @@ const busStyle = new Style({
 bus.setStyle(busStyle)
 gare.setStyle(gareStyle);
 
-let wmsPollution = 
+let wmsPollution =
 	new TileLayer({
-	  source: new TileWMS({
-		url: 'https://magellan.airparif.asso.fr/geoserver/apisHorAir/wms',
-		params: {"request":"GetMap",'LAYERS': 'apisHorAir:indice_api', "styles":"","authkey":"c719086c-94d2-f6e0-2fff-94db463fba2d" },
-		serverType: 'geoserver',
-		transition: 0,
-	  }),
-	  opacity:1
+		source: new TileWMS({
+			url: 'https://magellan.airparif.asso.fr/geoserver/apisHorAir/wms',
+			params: { "request": "GetMap", 'LAYERS': 'apisHorAir:indice_api', "styles": "", "authkey": "c719086c-94d2-f6e0-2fff-94db463fba2d" },
+			serverType: 'geoserver',
+			transition: 0,
+		}),
+		opacity: 1
 	});
 
 piste_cyclable.setZIndex(0)
@@ -279,20 +279,20 @@ clusters.setZIndex(2)
 bus.setZIndex(0)
 
 let layers = {
-    "geoserver-Pistes_cyclables": piste_cyclable,
-    "geojson-gare": gare,
-	"geojson-bus":bus,
-    "api-velo": clusters,
-	"wms-pollution":wmsPollution
+	"geoserver-Pistes_cyclables": piste_cyclable,
+	"geojson-gare": gare,
+	"geojson-bus": bus,
+	"api-velo": clusters,
+	"wms-pollution": wmsPollution
 }
 
-document.querySelector('#selection_layer').onclick = function(ev) {
+document.querySelector('#selection_layer').onclick = function (ev) {
 	if (ev.target.checked == true) {
 		map.addLayer(layers[ev.target.id])
 	} else if (ev.target.checked == false) {
-        if (ev.target.id == "api-velo"){
-            overlay.setPosition(undefined);
-        }
+		if (ev.target.id == "api-velo") {
+			overlay.setPosition(undefined);
+		}
 		map.removeLayer(layers[ev.target.id])
 	}
 }
@@ -302,8 +302,8 @@ document.getElementById("recherche").onclick = function geocode() {
 	let url_geocode = `https://nominatim.openstreetmap.org/search?q=${dest}&format=json&limit=1`
 	console.log(encodeURI(url_geocode))
 	fetch(encodeURI(url_geocode)).then(response => {
-			return response.json()
-		})
+		return response.json()
+	})
 		.then(data => {
 			let lat = data[0].lat
 			let lon = data[0].lon
@@ -312,8 +312,8 @@ document.getElementById("recherche").onclick = function geocode() {
 		})
 }
 
-map.on('click', function(event) {
-	let feature = map.forEachFeatureAtPixel(event.pixel, function(feature) {
+map.on('click', function (event) {
+	let feature = map.forEachFeatureAtPixel(event.pixel, function (feature) {
 		if (feature.get('features')) {
 			let ctx = document.getElementById('chart').getContext("2d");
 			let clusterFeatures = feature.get('features');
@@ -343,7 +343,7 @@ map.on('click', function(event) {
 				myChart = new Chart(ctx, {
 					type: 'pie',
 					data: data,
-					
+
 				});
 			}
 		}
@@ -356,8 +356,8 @@ map.on('click', function(event) {
 
 const opacityInput = document.getElementById('opacity-input');
 function update() {
-  const opacity = parseFloat(opacityInput.value);
-  wmsPollution.setOpacity(opacity);
+	const opacity = parseFloat(opacityInput.value);
+	wmsPollution.setOpacity(opacity);
 }
 opacityInput.addEventListener('input', update);
 update();
