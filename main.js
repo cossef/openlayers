@@ -16,7 +16,7 @@ import { Cluster } from 'ol/source.js';
 import TileWMS from 'ol/source/TileWMS.js';
 
 const outerCircleFill = new Fill({
-	color: 'rgba(40, 133, 111, .3)',
+	color: 'rgba(255,255,255,1)',
 });
 const innerCircleFill = new Fill({
 	color: 'rgba(40, 133, 111, 1)',
@@ -112,12 +112,30 @@ let hoverFeature;
 function clusterStyle(feature) {
 	const size = feature.get('features').length;
 	if (size > 1) {
+		if (size < 20) {
+			var rad = 20
+		}
+		else if (size < 50) {
+			rad = 30
+		}
+		else if (size < 100) {
+			rad = 40
+		}
+		else {
+			rad = 60
+		}
 		return [
 			new Style({
-				image: outerCircle,
+				image: new CircleStyle({
+					radius: rad * 1.03,
+					fill: outerCircleFill,
+				}),
 			}),
 			new Style({
-				image: innerCircle,
+				image: new CircleStyle({
+					radius: rad,
+					fill: innerCircleFill,
+				}),
 				text: new Text({
 					text: size.toString(),
 					fill: textFill,
@@ -206,7 +224,7 @@ let vectorSource = new VectorSource({
 })
 
 const clusterSource = new Cluster({
-	distance: 42,
+	distance: 100,
 	source: vectorSource,
 });
 
@@ -226,7 +244,7 @@ const piste_cyclable = new ImageLayer({
 	source: new ImageWMS({
 		url: 'http://localhost:8080/geoserver/OL/wms?service=WMS&version=1.1.0&request=GetMap',
 		params: {
-			'LAYERS': 'OL:Pistes_cyclables'
+			'LAYERS': 'OL:reseau-cyclable'
 		},
 		ratio: 1,
 		serverType: 'geoserver',
