@@ -15,12 +15,6 @@ import { fromLonLat } from 'ol/proj.js';
 import { Cluster } from 'ol/source.js';
 import TileWMS from 'ol/source/TileWMS.js';
 
-const outerCircleFill = new Fill({
-	color: 'rgba(255,255,255,1)',
-});
-const innerCircleFill = new Fill({
-	color: 'rgba(40, 133, 111, 1)',
-});
 const textFill = new Fill({
 	color: '#fff',
 });
@@ -28,14 +22,7 @@ const textStroke = new Stroke({
 	color: 'rgba(255, 255, 255, 1)',
 	width: .5,
 });
-const innerCircle = new CircleStyle({
-	radius: 15,
-	fill: innerCircleFill,
-});
-const outerCircle = new CircleStyle({
-	radius: 18,
-	fill: outerCircleFill,
-});
+
 const veloIcon = new Icon({
 	src: 'img/velo.png',
 	scale: 0.22
@@ -114,6 +101,7 @@ function clusterStyle(feature) {
 	if (size > 1) {
 		if (size < 20) {
 			var rad = 20
+			var fillColor = "blue" 
 		}
 		else if (size < 50) {
 			rad = 30
@@ -122,19 +110,23 @@ function clusterStyle(feature) {
 			rad = 40
 		}
 		else {
-			rad = 60
+			rad = 50
 		}
 		return [
 			new Style({
 				image: new CircleStyle({
 					radius: rad * 1.03,
-					fill: outerCircleFill,
+					fill: new Fill({
+						color: 'rgba(255,255,255,1)',
+					}),
 				}),
 			}),
 			new Style({
 				image: new CircleStyle({
 					radius: rad,
-					fill: innerCircleFill,
+					fill: new Fill({
+						color: 'rgba(40, 133, 111, 1)',
+					}),
 				}),
 				text: new Text({
 					text: size.toString(),
