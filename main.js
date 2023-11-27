@@ -347,7 +347,7 @@ map.on('click', function (event) {
 					labels: [`${veloRestant} vélos disponibles`, `${placeRestant} places disponibles`],
 					datasets: [{
 						data: [veloRestant, placeRestant],
-						backgroundColor: ['#28856F', '#f4283e']
+						backgroundColor: ['#28856F', '#ee6c67']
 					}]
 				};
 				myChart = new Chart(ctx, {
