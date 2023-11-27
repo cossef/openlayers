@@ -115,7 +115,7 @@ function clusterStyle(feature) {
 		return [
 			new Style({
 				image: new CircleStyle({
-					radius: rad * 1.03,
+					radius: rad +1.5,
 					fill: new Fill({
 						color: 'rgba(255,255,255,1)',
 					}),
